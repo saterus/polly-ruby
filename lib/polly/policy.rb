@@ -81,7 +81,7 @@ module Polly
           if @retries > 0
             @retries -= 1
             if @on_retry
-              @original_calling_context.instance_exec(ex, @fail_count, blk.binding, &@on_retry)
+              @original_calling_context.instance_exec(ex, @fail_count, blk.binding.receiver, &@on_retry)
             end
             retry
           else

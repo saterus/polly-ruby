@@ -76,7 +76,7 @@ describe Polly do
   context "when a retry is triggered" do
     let(:fake_logger) { double(:logger, log: true) }
     let(:policy) do
-      Polly.policy do |calling_ctx|
+      Polly.policy do
         on SampleError
         try_again(n: 3) { |ex, retry_count, ctx| fake_logger.log(ex) }
       end

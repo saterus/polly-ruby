@@ -1,5 +1,12 @@
 require "polly/version"
+require "polly/policy"
 
 module Polly
-  # Your code goes here...
+
+  BrokenCircuitError = Class.new(StandardError)
+
+  def self.policy(&blk)
+    Policy.configure(&blk)
+  end
+
 end
